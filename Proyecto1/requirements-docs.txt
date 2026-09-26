@@ -1,0 +1,2 @@
+# Solo para regenerar PDF; la aplicación usa exclusivamente biblioteca estándar.
+reportlab>=4.0,<5

@@ -1,0 +1,362 @@
+[
+  {
+    "archivo": "01_valido.hor",
+    "titulo": "Ejemplo del enunciado",
+    "esperado": {
+      "tipos_lexicos": [],
+      "choques": 0,
+      "clases_validas": 2
+    },
+    "obtenido": {
+      "tipos_lexicos": [],
+      "choques": 0,
+      "clases_validas": 2
+    },
+    "aprobado": true,
+    "tokens": 149,
+    "milisegundos": 0.6064000008336734,
+    "diagnosticos": []
+  },
+  {
+    "archivo": "02_caracteres.hor",
+    "titulo": "Recuperación ante @, % y ~",
+    "esperado": {
+      "tipos_lexicos": [
+        "CARACTER_NO_RECONOCIDO",
+        "CARACTER_NO_RECONOCIDO",
+        "CARACTER_NO_RECONOCIDO"
+      ],
+      "choques": 0,
+      "clases_validas": 2
+    },
+    "obtenido": {
+      "tipos_lexicos": [
+        "CARACTER_NO_RECONOCIDO",
+        "CARACTER_NO_RECONOCIDO",
+        "CARACTER_NO_RECONOCIDO"
+      ],
+      "choques": 0,
+      "clases_validas": 2
+    },
+    "aprobado": true,
+    "tokens": 149,
+    "milisegundos": 0.5181000014999881,
+    "diagnosticos": [
+      {
+        "numero": 1,
+        "lexema": "@",
+        "tipo": "CARACTER_NO_RECONOCIDO",
+        "descripcion": "Carácter no reconocido: '@'",
+        "linea": 3,
+        "columna": 1,
+        "fase": "LEXICO",
+        "inicio": 66,
+        "fin": 67
+      },
+      {
+        "numero": 2,
+        "lexema": "%",
+        "tipo": "CARACTER_NO_RECONOCIDO",
+        "descripcion": "Carácter no reconocido: '%'",
+        "linea": 3,
+        "columna": 3,
+        "fase": "LEXICO",
+        "inicio": 68,
+        "fin": 69
+      },
+      {
+        "numero": 3,
+        "lexema": "~",
+        "tipo": "CARACTER_NO_RECONOCIDO",
+        "descripcion": "Carácter no reconocido: '~'",
+        "linea": 3,
+        "columna": 5,
+        "fase": "LEXICO",
+        "inicio": 70,
+        "fin": 71
+      }
+    ]
+  },
+  {
+    "archivo": "03_hora_rango.hor",
+    "titulo": "Hora anterior a 06:00",
+    "esperado": {
+      "tipos_lexicos": [
+        "HORA_FUERA_DE_RANGO"
+      ],
+      "choques": 0,
+      "clases_validas": 1
+    },
+    "obtenido": {
+      "tipos_lexicos": [
+        "HORA_FUERA_DE_RANGO"
+      ],
+      "choques": 0,
+      "clases_validas": 1
+    },
+    "aprobado": true,
+    "tokens": 148,
+    "milisegundos": 0.5034999994677491,
+    "diagnosticos": [
+      {
+        "numero": 1,
+        "lexema": "05:59",
+        "tipo": "HORA_FUERA_DE_RANGO",
+        "descripcion": "Hora fuera de rango o formato; use HH:MM entre 06:00 y 21:00",
+        "linea": 16,
+        "columna": 65,
+        "fase": "LEXICO",
+        "inicio": 573,
+        "fin": 578
+      }
+    ]
+  },
+  {
+    "archivo": "04_dia.hor",
+    "titulo": "DOMINGO no pertenece al lenguaje",
+    "esperado": {
+      "tipos_lexicos": [
+        "DIA_NO_RECONOCIDO"
+      ],
+      "choques": 0,
+      "clases_validas": 1
+    },
+    "obtenido": {
+      "tipos_lexicos": [
+        "DIA_NO_RECONOCIDO"
+      ],
+      "choques": 0,
+      "clases_validas": 1
+    },
+    "aprobado": true,
+    "tokens": 148,
+    "milisegundos": 0.49200000285054557,
+    "diagnosticos": [
+      {
+        "numero": 1,
+        "lexema": "DOMINGO",
+        "tipo": "DIA_NO_RECONOCIDO",
+        "descripcion": "Día no reconocido; use LUNES a SABADO",
+        "linea": 16,
+        "columna": 50,
+        "fase": "LEXICO",
+        "inicio": 558,
+        "fin": 565
+      }
+    ]
+  },
+  {
+    "archivo": "05_codigo.hor",
+    "titulo": "Código sin guion",
+    "esperado": {
+      "tipos_lexicos": [
+        "CODIGO_MAL_FORMADO"
+      ],
+      "choques": 0,
+      "clases_validas": 1
+    },
+    "obtenido": {
+      "tipos_lexicos": [
+        "CODIGO_MAL_FORMADO"
+      ],
+      "choques": 0,
+      "clases_validas": 1
+    },
+    "aprobado": true,
+    "tokens": 148,
+    "milisegundos": 0.47840000115684234,
+    "diagnosticos": [
+      {
+        "numero": 1,
+        "lexema": "\"LFP0796\"",
+        "tipo": "CODIGO_MAL_FORMADO",
+        "descripcion": "Código mal formado: se espera prefijo alfanumérico iniciado en letra, guion y dígitos",
+        "linea": 4,
+        "columna": 56,
+        "fase": "LEXICO",
+        "inicio": 131,
+        "fin": 140
+      },
+      {
+        "numero": 2,
+        "lexema": "clase",
+        "tipo": "REFERENCIA_INEXISTENTE",
+        "descripcion": "No está definido: curso LFP-0796",
+        "linea": 16,
+        "columna": 1,
+        "fase": "SEMANTICO",
+        "inicio": 508,
+        "fin": 513
+      }
+    ]
+  },
+  {
+    "archivo": "06_comentario_eof.hor",
+    "titulo": "Comentario sin salto final: EOF lo cierra",
+    "esperado": {
+      "tipos_lexicos": [],
+      "choques": 0,
+      "clases_validas": 2
+    },
+    "obtenido": {
+      "tipos_lexicos": [],
+      "choques": 0,
+      "clases_validas": 2
+    },
+    "aprobado": true,
+    "tokens": 150,
+    "milisegundos": 0.4837000014958903,
+    "diagnosticos": []
+  },
+  {
+    "archivo": "07_cadena.hor",
+    "titulo": "Cadena sin comilla de cierre",
+    "esperado": {
+      "tipos_lexicos": [
+        "CADENA_SIN_CERRAR"
+      ],
+      "choques": 0,
+      "clases_validas": 1
+    },
+    "obtenido": {
+      "tipos_lexicos": [
+        "CADENA_SIN_CERRAR"
+      ],
+      "choques": 0,
+      "clases_validas": 1
+    },
+    "aprobado": true,
+    "tokens": 138,
+    "milisegundos": 0.4631000010704156,
+    "diagnosticos": [
+      {
+        "numero": 1,
+        "lexema": "\"Cadena sin cerrar",
+        "tipo": "CADENA_SIN_CERRAR",
+        "descripcion": "Cadena sin cerrar",
+        "linea": 4,
+        "columna": 8,
+        "fase": "LEXICO",
+        "inicio": 83,
+        "fin": 101
+      },
+      {
+        "numero": 2,
+        "lexema": "clase",
+        "tipo": "REFERENCIA_INEXISTENTE",
+        "descripcion": "No está definido: curso LFP-0796",
+        "linea": 16,
+        "columna": 1,
+        "fase": "SEMANTICO",
+        "inicio": 454,
+        "fin": 459
+      }
+    ]
+  },
+  {
+    "archivo": "08_choque_docente.hor",
+    "titulo": "Docente simultáneo en dos aulas y secciones",
+    "esperado": {
+      "tipos_lexicos": [],
+      "choques": 1,
+      "clases_validas": 3
+    },
+    "obtenido": {
+      "tipos_lexicos": [],
+      "choques": 1,
+      "clases_validas": 3
+    },
+    "aprobado": true,
+    "tokens": 174,
+    "milisegundos": 0.5556999967666343,
+    "diagnosticos": []
+  },
+  {
+    "archivo": "09_choque_aula.hor",
+    "titulo": "Aula simultánea con dos docentes",
+    "esperado": {
+      "tipos_lexicos": [],
+      "choques": 1,
+      "clases_validas": 3
+    },
+    "obtenido": {
+      "tipos_lexicos": [],
+      "choques": 1,
+      "clases_validas": 3
+    },
+    "aprobado": true,
+    "tokens": 174,
+    "milisegundos": 0.558600000658771,
+    "diagnosticos": []
+  },
+  {
+    "archivo": "10_limites.hor",
+    "titulo": "06:00, 21:00 e intervalos adyacentes",
+    "esperado": {
+      "tipos_lexicos": [],
+      "choques": 0,
+      "clases_validas": 2
+    },
+    "obtenido": {
+      "tipos_lexicos": [],
+      "choques": 0,
+      "clases_validas": 2
+    },
+    "aprobado": true,
+    "tokens": 149,
+    "milisegundos": 0.491300001158379,
+    "diagnosticos": []
+  },
+  {
+    "archivo": "11_vacio.hor",
+    "titulo": "Catálogos vacíos, sin división por cero",
+    "esperado": {
+      "tipos_lexicos": [],
+      "choques": 0,
+      "clases_validas": 0
+    },
+    "obtenido": {
+      "tipos_lexicos": [],
+      "choques": 0,
+      "clases_validas": 0
+    },
+    "aprobado": true,
+    "tokens": 20,
+    "milisegundos": 0.053899999329587445,
+    "diagnosticos": []
+  },
+  {
+    "archivo": "12_formato_hora.hor",
+    "titulo": "Hora de un dígito: 7:00",
+    "esperado": {
+      "tipos_lexicos": [
+        "HORA_FUERA_DE_RANGO"
+      ],
+      "choques": 0,
+      "clases_validas": 1
+    },
+    "obtenido": {
+      "tipos_lexicos": [
+        "HORA_FUERA_DE_RANGO"
+      ],
+      "choques": 0,
+      "clases_validas": 1
+    },
+    "aprobado": true,
+    "tokens": 148,
+    "milisegundos": 0.48239999887300655,
+    "diagnosticos": [
+      {
+        "numero": 1,
+        "lexema": "7:00",
+        "tipo": "HORA_FUERA_DE_RANGO",
+        "descripcion": "Hora fuera de rango o formato; use HH:MM entre 06:00 y 21:00",
+        "linea": 16,
+        "columna": 65,
+        "fase": "LEXICO",
+        "inicio": 573,
+        "fin": 577
+      }
+    ]
+  }
+]

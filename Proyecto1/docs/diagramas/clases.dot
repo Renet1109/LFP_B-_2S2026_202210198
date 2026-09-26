@@ -1,0 +1,23 @@
+digraph Clases {
+rankdir=TB; bgcolor="white";
+node [shape=record, fontname="Arial", fontsize=11, style=filled, fillcolor="#e6f3f0"];
+edge [fontname="Arial", fontsize=9];
+GUI [label="HorarioScriptApp|abrir / guardar / analizar\lmostrar_resultado()\l"];
+Doc [label="Documento|fuente / ruta / resultado\lresaltar()\l"];
+Servicio [label="servicio|analizar()\ldetectar_choques()\lcargas() / ocupaciones()\l"];
+Lexer [label="AnalizadorLexico|indice / linea / columna\lpendiente / esperado\lsiguiente_token() / analizar()\l"];
+Token [label="Token (base del estudiante)|numero / lexema / tipo\llinea / columna\lvalor / inicio / fin\l"];
+Errores [label="GestorErrores (base del estudiante)|agregar_error() / agregar()\lhay_errores() / limpiar()\lobtener_errores()\l"];
+Error [label="ErrorLexico|tipo / descripcion / fase\llinea / columna / offsets\l"];
+Lector [label="LectorHorario|leer() / atributos()\lvalidar_referencias()\l"];
+Modelo [label="Horario|cursos / catedraticos\laulas / clases\l"];
+Resultado [label="Resultado|tokens / errores / horario\lchoques / tiempo / frecuencias\l"];
+Reportes [label="GeneradorReportes|generar() / semanal()\lcarga() / estadisticas()\lerrores() / dot()\l"];
+GUI -> Doc [label="1 a varios"];
+GUI -> Servicio; GUI -> Reportes;
+Doc -> Resultado; Doc -> Lexer [label="resaltado"];
+Servicio -> Lexer; Servicio -> Lector; Servicio -> Resultado;
+Lexer -> Token; Lexer -> Errores; Errores -> Error;
+Lector -> Errores; Lector -> Modelo; Resultado -> Modelo;
+Reportes -> Resultado;
+}

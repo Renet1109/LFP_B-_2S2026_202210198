@@ -1,0 +1,32 @@
+{
+  "tokens": 274,
+  "errores_lexicos": 0,
+  "diagnosticos": [],
+  "choques": [
+    {
+      "primera": 5,
+      "segunda": 6,
+      "dia": "LUNES",
+      "inicio": 450,
+      "fin": 520,
+      "motivos": [
+        "CATEDRATICO"
+      ]
+    }
+  ],
+  "milisegundos": 1.1250999996264,
+  "frecuencias": {
+    "COMENTARIO_LINEA": 1,
+    "RESERVADA_BLOQUE": 5,
+    "SIMBOLO": 134,
+    "RESERVADA_ELEMENTO": 13,
+    "CADENA": 11,
+    "ATRIBUTO": 40,
+    "CODIGO": 29,
+    "ENTERO": 4,
+    "CATEGORIA": 2,
+    "RESERVADA_RELACION": 14,
+    "DIA": 7,
+    "HORA": 14
+  }
+}

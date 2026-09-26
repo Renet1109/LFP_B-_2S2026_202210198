@@ -1,0 +1,17 @@
+digraph Codigo {
+rankdir=LR; bgcolor="white";
+node [fontname="Arial", style=filled, fillcolor="#e6f3f0"];
+edge [fontname="Arial", fontsize=10];
+inicio [shape=point]; inicio -> C0;
+CD [shape=doublecircle]; CE [fillcolor="#ffd5d5"];
+C0 -> CP [label="letra"];
+C0 -> CE [label="otro"];
+CP -> CP [label="letra / dígito"];
+CP -> CG [label="guion"];
+CP -> CE [label="otro"];
+CG -> CD [label="dígito"];
+CG -> CE [label="otro"];
+CD -> CD [label="dígito"];
+CD -> CE [label="otro"];
+CE -> CE [label="cualquier carácter"];
+}

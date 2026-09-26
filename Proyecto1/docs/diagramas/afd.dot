@@ -1,0 +1,38 @@
+digraph AFD {
+graph [rankdir=LR, fontname="Arial", bgcolor="white", nodesep=.32, ranksep=.5];
+node [fontname="Arial", fontsize=12, shape=circle, style=filled, fillcolor="#e6f3f0"];
+edge [fontname="Arial", fontsize=9, color="#55707a"];
+inicio [shape=point]; inicio -> I;
+A [shape=doublecircle, fillcolor="#b6e4cc", label="A\nEmitir"];
+E [shape=doublecircle, fillcolor="#ffd5d5", label="E\nError"];
+I -> I [label="blanco / BOM inicial"];
+I -> PAL [label="letra"];
+I -> NUM [label="dígito"];
+I -> TEXTO [label="comilla"];
+I -> HASH [label="#"];
+I -> A [label="símbolo / EOF"];
+I -> E [label="otro"];
+PAL -> PAL [label="letra, dígito, -, _"];
+PAL -> A [label="otro / EOF; válido *"];
+PAL -> E [label="otro / EOF; inválido *"];
+NUM -> NUM [label="dígito"];
+NUM -> HORA [label=":"];
+NUM -> MALNUM [label="letra, -, _"];
+NUM -> A [label="otro / EOF *"];
+HORA -> HORA [label="letra, dígito, :, -, _"];
+HORA -> A [label="otro / EOF; HH:MM válido *"];
+HORA -> E [label="otro / EOF; hora inválida *"];
+MALNUM -> MALNUM [label="letra, dígito, :, -, _"];
+MALNUM -> E [label="otro / EOF *"];
+TEXTO -> TEXTO [label="otro"];
+TEXTO -> ESCAPE [label="barra inversa"];
+TEXTO -> A [label="comilla de cierre"];
+TEXTO -> E [label="CR / LF / EOF *"];
+ESCAPE -> TEXTO [label="cualquier carácter"];
+ESCAPE -> E [label="EOF *"];
+HASH -> COMENTARIO [label="#"];
+HASH -> E [label="otro / EOF *"];
+COMENTARIO -> COMENTARIO [label="otro"];
+COMENTARIO -> A [label="CR / LF / EOF *"];
+leyenda [shape=note, fillcolor="#f3f6f8", label="* No consume delimitador.\nA/E son salidas, no estados en el bucle.\nLa próxima llamada empieza en I.\nTras la forma se aplica clasificación contextual."];
+}

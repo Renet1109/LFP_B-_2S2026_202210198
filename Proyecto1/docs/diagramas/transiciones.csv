@@ -1,0 +1,30 @@
+﻿Estado,Entrada,Destino,Acción
+I,"Espacio, tab, CR, LF; BOM solo inicial",I,Consumir; actualizar posición
+I,Letra ASCII,PAL,Consumir inicio de palabra
+I,Dígito ASCII,NUM,Consumir inicio numérico
+I,Comilla doble,TEXTO,Consumir apertura; valor vacío
+I,#,HASH,Consumir primer #
+I,"{ } [ ] : , ;",A,Consumir y emitir SIMBOLO
+I,EOF,A,Emitir EOF; no consumir
+I,Cualquier otro carácter,E,Consumir uno; CARACTER_NO_RECONOCIDO
+PAL,"Letra, dígito, guion o _",PAL,Consumir secuencia completa
+PAL,Otro carácter o EOF,A / E,"No consumir delimitador; reservada, código o error"
+NUM,Dígito,NUM,Consumir
+NUM,:,HORA,Consumir
+NUM,"Letra, guion o _",MALNUM,Consumir; candidato numérico inválido
+NUM,Otro carácter o EOF,A,No consumir delimitador; emitir ENTERO
+HORA,"Letra, dígito, : guion o _",HORA,Consumir candidato completo
+HORA,Otro carácter o EOF,A / E,Validar HH:MM y rango; HORA o HORA_FUERA_DE_RANGO
+MALNUM,"Letra, dígito, : guion o _",MALNUM,Consumir candidato completo
+MALNUM,Otro carácter o EOF,E,No consumir; CODIGO_MAL_FORMADO
+TEXTO,Comilla doble,A,Consumir cierre; CADENA o CODIGO
+TEXTO,Barra inversa,ESCAPE,Consumir escape
+TEXTO,"CR, LF o EOF",E,No consumir; CADENA_SIN_CERRAR
+TEXTO,Cualquier otro carácter,TEXTO,Consumir y añadir al valor
+ESCAPE,EOF,E,CADENA_SIN_CERRAR
+ESCAPE,CR o LF,TEXTO,Consumir continuación; no añadir al valor
+ESCAPE,Cualquier otro carácter,TEXTO,"Consumir; n/t/r se decodifican, resto literal"
+HASH,#,COMENTARIO,Consumir segundo #
+HASH,Otro carácter o EOF,E,No consumir; CARACTER_NO_RECONOCIDO
+COMENTARIO,"CR, LF o EOF",A,No consumir; emitir COMENTARIO_LINEA
+COMENTARIO,Cualquier otro carácter,COMENTARIO,Consumir sin validar contenido
