@@ -227,7 +227,7 @@ def casos():
          tabla(('Caso', 'Escenario', 'Resultado'), [[c['archivo'][:2], c['titulo'], 'PASS' if c['aprobado'] else 'FAIL'] for c in evidencia], (45, 390, 72)),
          Spacer(1, 12), p('Además de estos doce escenarios, hay 44 pruebas automatizadas. La prueba de intervalos compara el detector contra intersecciones de conjuntos de minutos; la prueba de horas recorre los 1440 minutos del día. No se presentan esas iteraciones como miles de pruebas independientes.', 'SmallHS'),
          PageBreak(), titulo('Entrada base completa · 01_valido.hor')]
-    fuente = leer_archivo(BASE/'entrada/01_valido.hor')
+    fuente = leer_archivo(BASE/'entrada/01_valido.hor').replace('\r\n', '\n').replace('\r', '\n')
     # Se ajusta la presentación del listado, no el archivo original de prueba.
     import textwrap
     lineas = []
