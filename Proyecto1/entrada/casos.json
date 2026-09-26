@@ -1,0 +1,124 @@
+[
+  {
+    "archivo": "01_valido.hor",
+    "titulo": "Ejemplo del enunciado",
+    "esperado": {
+      "tipos_lexicos": [],
+      "choques": 0,
+      "clases_validas": 2
+    }
+  },
+  {
+    "archivo": "02_caracteres.hor",
+    "titulo": "Recuperación ante @, % y ~",
+    "esperado": {
+      "tipos_lexicos": [
+        "CARACTER_NO_RECONOCIDO",
+        "CARACTER_NO_RECONOCIDO",
+        "CARACTER_NO_RECONOCIDO"
+      ],
+      "choques": 0,
+      "clases_validas": 2
+    }
+  },
+  {
+    "archivo": "03_hora_rango.hor",
+    "titulo": "Hora anterior a 06:00",
+    "esperado": {
+      "tipos_lexicos": [
+        "HORA_FUERA_DE_RANGO"
+      ],
+      "choques": 0,
+      "clases_validas": 1
+    }
+  },
+  {
+    "archivo": "04_dia.hor",
+    "titulo": "DOMINGO no pertenece al lenguaje",
+    "esperado": {
+      "tipos_lexicos": [
+        "DIA_NO_RECONOCIDO"
+      ],
+      "choques": 0,
+      "clases_validas": 1
+    }
+  },
+  {
+    "archivo": "05_codigo.hor",
+    "titulo": "Código sin guion",
+    "esperado": {
+      "tipos_lexicos": [
+        "CODIGO_MAL_FORMADO"
+      ],
+      "choques": 0,
+      "clases_validas": 1
+    }
+  },
+  {
+    "archivo": "06_comentario_eof.hor",
+    "titulo": "Comentario sin salto final: EOF lo cierra",
+    "esperado": {
+      "tipos_lexicos": [],
+      "choques": 0,
+      "clases_validas": 2
+    }
+  },
+  {
+    "archivo": "07_cadena.hor",
+    "titulo": "Cadena sin comilla de cierre",
+    "esperado": {
+      "tipos_lexicos": [
+        "CADENA_SIN_CERRAR"
+      ],
+      "choques": 0,
+      "clases_validas": 1
+    }
+  },
+  {
+    "archivo": "08_choque_docente.hor",
+    "titulo": "Docente simultáneo en dos aulas y secciones",
+    "esperado": {
+      "tipos_lexicos": [],
+      "choques": 1,
+      "clases_validas": 3
+    }
+  },
+  {
+    "archivo": "09_choque_aula.hor",
+    "titulo": "Aula simultánea con dos docentes",
+    "esperado": {
+      "tipos_lexicos": [],
+      "choques": 1,
+      "clases_validas": 3
+    }
+  },
+  {
+    "archivo": "10_limites.hor",
+    "titulo": "06:00, 21:00 e intervalos adyacentes",
+    "esperado": {
+      "tipos_lexicos": [],
+      "choques": 0,
+      "clases_validas": 2
+    }
+  },
+  {
+    "archivo": "11_vacio.hor",
+    "titulo": "Catálogos vacíos, sin división por cero",
+    "esperado": {
+      "tipos_lexicos": [],
+      "choques": 0,
+      "clases_validas": 0
+    }
+  },
+  {
+    "archivo": "12_formato_hora.hor",
+    "titulo": "Hora de un dígito: 7:00",
+    "esperado": {
+      "tipos_lexicos": [
+        "HORA_FUERA_DE_RANGO"
+      ],
+      "choques": 0,
+      "clases_validas": 1
+    }
+  }
+]
