@@ -183,7 +183,10 @@ class AnalizadorLexico:
                     tipo = "CODIGO"
                 error = None
                 if tipo is None:
-                    es_codigo = self.esperado == "codigo" or "-" in lexema or "_" in lexema
+                    es_codigo = self.esperado == "codigo"
+                    for caracter in lexema:
+                        if caracter == "-" or caracter == "_":
+                            es_codigo = True
                     error = ("CODIGO_MAL_FORMADO" if es_codigo else "PALABRA_NO_RECONOCIDA",
                              "Código mal formado" if es_codigo else "Palabra no reconocida; revise mayúsculas y ortografía")
                 return self._emitir(lexema, tipo or "", lexema, linea, columna, inicio, error)
