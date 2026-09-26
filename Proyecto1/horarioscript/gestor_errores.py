@@ -1,3 +1,4 @@
+"""Clases originales de William; conservan sus métodos y añaden fase y offsets."""
 class ErrorLexico:
     def __init__(
         self,
@@ -6,7 +7,10 @@ class ErrorLexico:
         tipo,
         descripcion,
         linea,
-        columna
+        columna,
+        fase="LEXICO",
+        inicio=0,
+        fin=0
     ):
         self.numero = numero
         self.lexema = lexema
@@ -14,6 +18,9 @@ class ErrorLexico:
         self.descripcion = descripcion
         self.linea = linea
         self.columna = columna
+        self.fase = fase
+        self.inicio = inicio
+        self.fin = fin
 
     def __str__(self):
         return (
@@ -59,3 +66,13 @@ class GestorErrores:
 
     def obtener_errores(self):
         return self.errores
+
+    def agregar(self, token, tipo, descripcion, fase="LEXICO"):
+        error = ErrorLexico(len(self.errores) + 1, token.lexema, tipo,
+                            descripcion, token.linea, token.columna,
+                            fase, token.inicio, token.fin)
+        self.errores.append(error)
+        return error
+
+
+Diagnostico = ErrorLexico

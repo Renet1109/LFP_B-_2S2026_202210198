@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.venv/
+Proyecto1/salidas/
+Proyecto1/.sesion/
+.DS_Store
+Thumbs.db
